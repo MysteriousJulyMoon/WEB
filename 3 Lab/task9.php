@@ -1,5 +1,4 @@
 <?php
-// 'x', 'xx', 'xxx'...
 $array = [];
 for ($i = 1; $i <= 10; $i++) {
     $array[] = str_repeat('x', $i);
