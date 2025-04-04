@@ -6,7 +6,7 @@ $categories = ["Путешествия", "Отдых", "Туризм"];
 // Функция для создания директории, если её нет
 function createDirectoryIfNotExists($dir) {
     if (!is_dir($dir)) {
-        mkdir($dir, 0777, true); // Создаем директорию с правами доступа 0777
+        mkdir($dir, 0777, true); 
     }
 }
 
@@ -19,13 +19,13 @@ foreach ($categories as $category) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL); // Валидация email
     $category = $_POST["category"];
-    $title = preg_replace("/[^a-zA-Zа-яА-Я0-9_s]/u", "", $_POST["title"]); // Санитизация заголовка
+    $title = preg_replace("/[^a-zA-Zа-яА-Я0-9_s]/u", "", $_POST["title"]); 
     $content = $_POST["content"];
 
     // Проверка на заполненность и валидация email
     if ($email && in_array($category, $categories) && !empty($title) && !empty($content)) {
         $filename = "$category/" . str_replace(" ", "_", $title) . ".txt";
-        $filename =  preg_replace("/[^a-zA-Zа-яА-Я0-9_-.]/u", "", $filename); //доп санитизация
+        $filename =  preg_replace("/[^a-zA-Zа-яА-Я0-9_-.]/u", "", $filename); 
         // Запись данных в файл
         if (file_put_contents($filename, "Email: $emailnn$content")) {
             $message = "Объявление успешно добавлено!";
@@ -57,7 +57,7 @@ foreach ($fixed_files as $file) {
             "content" => $content
         ];
     } else {
-        // Обработка случая, когда файл не найден. Можно, например, вывести сообщение об ошибке в лог.
+        // Обработка случая, когда файл не найден. 
         error_log("Файл не найден: " . $file);
     }
 }
@@ -93,7 +93,7 @@ foreach ($fixed_files as $file) {
         </select><br><br>
         Заголовок: <input type="text" name="title" required><br><br>
         Текст объявления:<br>
-        <textarea name="content" rows="5" cols="40" required></textarea><br>  <!-- Увеличен размер textarea -->
+        <textarea name="content" rows="5" cols="40" required></textarea><br>  
         <button type="submit">Добавить</button>
     </form>
 
