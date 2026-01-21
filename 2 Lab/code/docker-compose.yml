@@ -8,7 +8,7 @@ services:
       - ./site.conf:/etc/nginx/conf.d/site.conf
     links:
       - php
-  php: # тут должно было быть имя любимой девушки которая будет слушать порт
+  php: 
     image: php:8.3-fpm
     volumes:
       - ./code:/code
